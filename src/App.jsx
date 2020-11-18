@@ -33,9 +33,18 @@ export default class App extends Component {
                 <Switch>
                     <Route exact path="/app/:id" component={Schedule} />
                     <Route exact path="/" component={Homepage} />
+                    <Route component={Unknown} />
                 </Switch>
             </div>
         </BrowserRouter>
+    }
+}
+
+class Unknown extends Component {
+    render() {
+        return <div>
+            404.
+        </div>
     }
 }
 
@@ -67,7 +76,7 @@ class Homepage extends Component {
                     </div>
                     <div class="col-auto">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inlineFormInputGroup" onChange={this.updateValue}  placeholder="5 or 6 digits" />
+                            <input type="number" class="form-control" id="inlineFormInputGroup" onChange={this.updateValue}  placeholder="5 or 6 digits" />
                         </div>
                     </div>
                     <div class="col-auto">
