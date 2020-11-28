@@ -6,12 +6,55 @@ import { BrowserRouter, Link, NavLink } from 'react-router-dom';
 
 
 export default class App extends Component {
-    render() {
+    constructor(props) {
+        super(props)
+        this.state = {
+            supportId: null,
+            text: 'Hello, world.'
+        }
+        this.displaySupportId = this.displaySupportId.bind(this)
+    }
+    displaySupportId() {
+        this.setState({
+            supportId: '1.0.258,1.1.611,058922'
+        })
+    }
 
+    render() {
         return <BrowserRouter>
             <div>
+            <header className="header">
+        <span style={{
+          float: "left"
+        }}>
+          <img src='/img/nz_flag.svg' className='svgicon'/>
+          <span className='conntarget'>
+            Connected securely to <i>Quicktable Student Beta</i> <b>web.quicktable.net</b>
+            <span className='conntarget'>
+              <a href='mailto:support@quicktable.net'>Contact support</a>
+            </span>
+            <span className='conntarget'>
+                &#8226;
+            </span>
+            <span className='conntarget'>
+                {this.state.supportId ? <span>
+                    {this.state.supportId}
+                </span> : <a href='#' onClick={this.displaySupportId}>
+                    Display support ID
+                </a>}
+            </span>
+          </span>
+        </span>
+        <span style={{
+          float: "right"
+        }}>
+          <span className='right-float'>
+            Client 1.0.258 &#8226; Server 1.1.611 &#8226; Build <code>e04013b</code> (<code>jacksonr213</code>) &#8226; Connected to <code>spider.scotscollege.school.nz</code>
+          </span>
+        </span>
+      </header>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <NavLink class="navbar-brand" to="/">Quicktable</NavLink>
+                    <NavLink class="navbar-brand" to="/">Quicktable Student</NavLink>
 
                     {/*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

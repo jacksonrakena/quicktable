@@ -2,6 +2,10 @@ button {
     margin-bottom: 20px;
 }
 
+.slot {
+    box-shadow: 1px 1px 10px grey;
+  }
+
 .class-name {
     font-weight: bold;
     font-size: 20px;
