@@ -110,6 +110,10 @@ export default class Schedule extends Component {
                                 <li><a href="https://scotscollegenz.sharepoint.com/SitePages/Home.aspx">Scot-E</a></li>
                                 <li><a href="https://outlook.office.com/mail/inbox">School email</a></li>
                                 <li><a href="https://spider.scotscollege.school.nz/Spider2011/Pages/Home.aspx">School spider</a></li>
+                                <li><a href="https://secure.nzqa.govt.nz/for-learners/records/index.do">NZQA Results</a></li>
+                                <li><a href="https://www.languageperfect.com/app/#/dashboard">Education Perfect</a></li>
+                                <li><a href="http://scotsprn03:9191/user">Printing (Scots Wi-Fi only)</a></li>
+                                <li><a href="https://app.careercentral.school.nz/my-credits">Career Central credit tracker</a></li>
                             </ul>
                         </div>
                     </div>
