@@ -14,7 +14,6 @@ export default class TodaySection extends Component {
     }
     componentDidMount() {
         axios.get('https://quotes.rest/qod?category=students&language=en', {headers: {accept: 'application/json'}}).then(d => {
-            console.log(d)
             var data = d.data.contents.quotes[0]
             this.setState({
                 quote: {

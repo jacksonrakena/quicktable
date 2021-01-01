@@ -3,6 +3,7 @@ import '../Root.css';
 import './App.css';
 import TodaySection from "./app/TodaySection";
 import Timetable from "./app/timetable/Timetable";
+import NewsSection from "./app/NewsSection";
 
 export default class App extends Component {
     constructor(props) {
@@ -11,17 +12,17 @@ export default class App extends Component {
     }
     render() {
         return <div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm panel">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-sm panel">
                         {<TodaySection />}
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm panel">
+                <div className="row">
+                    <div className="col-sm panel">
                         {<Timetable id={this.id} />}
                     </div>
-                    <div class="col-sm panel">
+                    <div className="col-sm panel">
                         <h4>School resources</h4>
                         <div>
                             <ul>
@@ -35,12 +36,13 @@ export default class App extends Component {
                                 <li><a href="https://app.careercentral.school.nz/my-credits">Career Central credit tracker</a></li>
                             </ul>
                         </div>
+                        <NewsSection />
                     </div>
                 </div>
             </div>
-            <div class="qt-footer">
-                <div class="container-fluid">
-                    <span class="text-muted">
+            <div className="qt-footer">
+                <div className="container-fluid">
+                    <span className="text-muted">
                         &copy; 2019-2021 Jackson Rakena
                     </span>
                 </div>

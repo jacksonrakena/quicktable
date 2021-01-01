@@ -63,18 +63,18 @@ class Homepage extends Component {
                 All you'll need to jump in is your 5 or 6-digit student ID number.
             </div>
             <form className="mt-3">
-                <div class="form-row align-items-center justify-content-start">
-                    <div class="col-auto">
+                <div className="form-row align-items-center justify-content-start">
+                    <div className="col-auto">
                         <span>Please enter your student ID number:</span>
                     </div>
-                    <div class="col-auto">
-                        <div class="input-group">
-                            <input type="number" class="form-control" id="inlineFormInputGroup" onChange={this.updateValue}  placeholder="5 or 6 digits" />
+                    <div className="col-auto">
+                        <div className="input-group">
+                            <input type="number" className="form-control" id="inlineFormInputGroup" onChange={this.updateValue}  placeholder="5 or 6 digits" />
                         </div>
                     </div>
-                    <div class="col-auto">
+                    <div className="col-auto">
                         <NavLink to={`/app/${this.state.id}`}>
-                            <button type="submit" class="btn btn-primary mb-1">Enter</button>
+                            <button type="submit" className="btn btn-primary mb-1">Enter</button>
                         </NavLink>
                     </div>
                 </div>
