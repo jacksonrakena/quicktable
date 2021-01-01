@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
  
       console.log('latest: ' + latestVersion)
       console.log('current: ' + currentVersion)
-      if (latestVersion !== currentVersion) {
+      if (latestVersion.trim() !== currentVersion.trim()) {
         console.log('reloading')
         window.location.reload(true);
       }
