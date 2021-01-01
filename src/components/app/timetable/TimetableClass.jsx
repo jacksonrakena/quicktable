@@ -1,7 +1,6 @@
 import { Component } from "react";
-import './ScheduleEntry.css';
 
-export default class ScheduleEntry extends Component {
+export default class TimetableClass extends Component {
     generateColorForClass(name) {
         var hash = 0;
         if (name.length === 0) return hash;
@@ -16,6 +15,7 @@ export default class ScheduleEntry extends Component {
         }
         return color;
     }
+    
     render() {
         return <div style={{
             backgroundColor: this.generateColorForClass(this.props.entry.name) + 'AA',

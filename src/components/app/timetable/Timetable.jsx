@@ -1,8 +1,7 @@
 import { Component } from "react";
-import { ScheduleButtons } from './ScheduleButtons';
 import { DateTime } from 'luxon'
 import axios from 'axios'
-import ScheduleEntry from './ScheduleEntry';
+import TimetableClass from './TimetableClass';
 import DateUtils from "../../../utils/DateUtils";
 import ReactDatePicker from "react-datepicker";
 
@@ -140,7 +139,7 @@ export default class Timetable extends Component {
             timetablePanel = <div>
                 <div className="d-flex flex-column justify-content-between">
                 {this.state.classes.map((element, i0) => {
-                    return <ScheduleEntry entry={element} />
+                    return <TimetableClass entry={element} />
                 })}
                 </div>
             </div>

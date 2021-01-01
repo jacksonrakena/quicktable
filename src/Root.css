@@ -20,38 +20,10 @@ body {
   background-color: #f5f5f5;
 }
 
-
 .container {
   width: auto;
   max-width: 680px;
   padding: 0 15px;
-}
-
-.header {
-  
-  top: 0;
-  width: 100%;
-  
-  text-align: left;
-  padding: 5px;
-  padding-left: 20px;
-  font-size: 10px;
-  background-color: #f5f5f5;
-  float: left;
-}
-
-.right-float {
-  margin-right: 10px;
-}
-
-.svgicon img, .svgicon {
-  height: 1em;
-  width: auto;
-  justify-self: center;
-}
-
-.conntarget {
-  padding-left: 7px;
 }
 
 .qt-footer {
