@@ -29,6 +29,7 @@ if (process.env.NODE_ENV === "production") {
       console.log('latest: ' + latestVersion)
       console.log('current: ' + currentVersion)
       if (latestVersion !== currentVersion) {
+        console.log('reloading')
         window.location.reload(true);
       }
     });
