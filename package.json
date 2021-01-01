@@ -22,7 +22,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "REACT_APP_COMMIT_REF=$COMMIT_REF react-scripts build && echo $COMMIT_REF >> build/version.txt",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
