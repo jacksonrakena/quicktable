@@ -105,9 +105,17 @@ class Homepage extends Component {
             <div>
                 Welcome to the Quicktable @ Scots College student beta programme.
                 <br />
+                Quicktable is your all-in-one solution for life at Scots College.
+                <br/>
+                It includes quick access to your timetable, school resources, with more
+                <br/>
+                features coming soon.
+                <br />
+                <br />
+
                 All you'll need to jump in is your 5 or 6-digit student ID number.
             </div>
-            <form className="mt-5">
+            <form className="mt-3">
                 <div class="form-row align-items-center justify-content-start">
                     <div class="col-auto">
                         <span>Please enter your student ID number:</span>
