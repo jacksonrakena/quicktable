@@ -29,7 +29,7 @@ export default class App extends Component {
         }}>
           <img src='/img/nz_flag.svg' className='svgicon'/>
           <span className='conntarget'>
-            Connected securely to <i>Quicktable Student Beta</i> <b>web.quicktable.net</b>
+            Connected securely to <i>Quicktable Student Beta</i> v1.1.511 <b>web.quicktable.net</b>
             <span className='conntarget'>
               <a href='mailto:support@quicktable.net'>Contact support</a>
             </span>
@@ -45,16 +45,9 @@ export default class App extends Component {
             </span>
           </span>
         </span>
-        <span style={{
-          float: "right"
-        }}>
-          <span className='right-float'>
-            Client 1.0.258 &#8226; Server 1.1.611 &#8226; Build <code>e04013b</code> (<code>jacksonr213</code>) &#8226; Connected to <code>spider.scotscollege.school.nz</code>
-          </span>
-        </span>
       </header>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <NavLink class="navbar-brand" to="/">Quicktable Student</NavLink>
+                    <NavLink class="navbar-brand" to="/">Quicktable, Scots College</NavLink>
 
                     {/*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,9 +103,11 @@ class Homepage extends Component {
     render() {
         return <div className="content">
             <div>
-                Welcome to the Quicktable beta.
+                Welcome to the Quicktable @ Scots College student beta programme.
+                <br />
+                All you'll need to jump in is your 5 or 6-digit student ID number.
             </div>
-            <form>
+            <form className="mt-5">
                 <div class="form-row align-items-center justify-content-start">
                     <div class="col-auto">
                         <span>Please enter your student ID number:</span>
@@ -129,13 +124,32 @@ class Homepage extends Component {
                     </div>
                 </div>
             </form>
-            <footer class="footer">
-                <div class="container">
-                    <span class="text-muted">
-                        Copyright &copy; 2019-2021 Jackson Rakena
-                    </span>
+            <div className="mt-5">
+                <h4>Where can I find my student ID number?</h4>
+                <span style={{color:'gray'}}>Your student ID number is stored solely on your device and is never sent to Quicktable's servers.</span>
+                <div className="mt-2">
+                    You've got a couple of options.
+                    <div className="mt-2">
+                        <b>Option 1: Your School-Issued Student ID Card</b> <br/>
+                        <div>
+                            Your student ID number is printed on the bottom of your school-issued student ID card, typically issued
+                            to new students in March.<br />
+                            It's located underneath the barcode, as you can see in the example image below, taken from a Senior School student
+                            ID card issued in 2020.
+                        </div>
+                        <img src="img/id_expl.png" width="250"/>
+                    </div>
+                    <div className="mt-2">
+                        <b>Option 2: The PCSchool Portal</b><br />
+                        <div>
+                            Your student ID number is available on the PCSchool portal. You can go there directly by clicking <a href="https://spider.scotscollege.school.nz/Spider2011/Pages/StudentInformation.aspx">this link.</a><br />
+                            It's located next to the "Barcode" label in your student information, as you can see in the example image below, taken
+                            from a Senior School student's information page.
+                        </div>
+                        <img src="img/net_expl.png" width="400" />
+                    </div>
                 </div>
-            </footer>
+            </div>
         </div>
     }
 }

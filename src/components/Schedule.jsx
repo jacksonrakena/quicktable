@@ -1,14 +1,23 @@
 import { Component } from "react";
 import '../App.css';
 import './Schedule.css';
-import ScheduleEntry from "./ScheduleEntry";
+import ScheduleEntry from "./app/timetable/ScheduleEntry";
 import EventEntry from './EventEntry';
 import axios from 'axios';
 import { DateTime } from 'luxon';
+import TodaySection from "./app/TodaySection";
+import { ScheduleButtons } from "./app/timetable/ScheduleButtons";
+import Timetable from "./app/timetable/Timetable";
 
 export default class Schedule extends Component {
     constructor(props) {
         super(props)
+        this.quotes = [
+            {
+                text: 'So we beat on, boats against the current, borne back ceaselessly into the past.',
+                source: 'The Great Gatsby, F. Scott Fitzgerald'
+            }
+        ]
         this.state = {
             classes: [],
             id: props.match.params.id,
@@ -16,7 +25,8 @@ export default class Schedule extends Component {
             date: DateTime.local(),
             events: [],
             doneEvents: [],
-            eventsError: ''
+            eventsError: '',
+            quote: {}
         }
         this.advance = this.advance.bind(this)
         this.backwards = this.backwards.bind(this)
@@ -81,69 +91,35 @@ export default class Schedule extends Component {
     }
 
     render() {
-        let timetablePanel;
-        if (this.state.error) {
-            timetablePanel = <div class="container h-100 d-flex justify-content-center align-content-center">
-            <div class="jumbotron my-auto align-self-center">
-                <span>{this.state.error}</span>
-            </div>
-            </div>
-        } else if (this.state.classes.length === 0 && !this.state.done) {
-            timetablePanel = <div class="container h-100 d-flex justify-content-center align-content-center">
-            <div class="jumbotron my-auto align-self-center">
-                <div class="spinner-border" role="status"></div>
-                <br />
-                <span>Loading timetable...</span>
-            </div>
-            </div>
-        } else if (this.state.classes.length === 0 && this.state.done) {
-            timetablePanel = <div class="container h-100 flex-column justify-content-center align-content-center">
-            <div class="jumbotron my-auto align-self-center">No classes today.</div>
-            <div class="d-flex flex-row justify-content-between align-items-baseline my-auto">
-                <button class="btn btn-primary" onClick={this.backwards}>
-                    Back
-                </button>
-                <span>
-                    {this.state.date.toFormat('DDDD')}
-                </span>
-                <button class="btn btn-primary" onClick={this.advance}>
-                    Next
-                </button>
-            </div>
-            </div>
-        } else {
-            timetablePanel = <div>
-            {this.state.classes.map((element, i0) => {
-                return <ScheduleEntry entry={element} />
-            })}
-            <div class="d-flex flex-row justify-content-between align-items-baseline">
-                <button class="btn btn-primary" onClick={this.backwards}>
-                    Back
-                </button>
-                <span>
-                    {this.state.date.toFormat('DDDD')}
-                </span>
-                <button class="btn btn-primary" onClick={this.advance}>
-                    Next
-                </button>
-            </div>
-            </div>
-        }
-
-        return <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm panel">
-                    <h4>Timetable</h4>
-                    <div class="tt-subheading">
-                        {this.state.date.toFormat('DDDD')}
+        return <div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm panel">
+                        {<TodaySection />}
                     </div>
-                    {timetablePanel}
                 </div>
-                <div class="col-sm panel">
-                    <h4>Assignments</h4>
-                    <div>
-                        This feature is coming soon.
+                <div class="row">
+                    <div class="col-sm panel">
+                        {<Timetable id={this.state.id} />}
                     </div>
+                    <div class="col-sm panel">
+                        <h4>School resources</h4>
+                        <div>
+                            <ul>
+                                <li><a href="http://www.scotscollege.school.nz/daily-notices/">Daily Notices</a></li>
+                                <li><a href="https://scotscollegenz.sharepoint.com/SitePages/Home.aspx">Scot-E</a></li>
+                                <li><a href="https://outlook.office.com/mail/inbox">School email</a></li>
+                                <li><a href="https://spider.scotscollege.school.nz/Spider2011/Pages/Home.aspx">School spider</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="qt-footer">
+                <div class="container-fluid">
+                    <span class="text-muted">
+                        &copy; 2019-2021 Jackson Rakena
+                    </span>
                 </div>
             </div>
         </div>
