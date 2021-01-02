@@ -24,7 +24,7 @@ export default class Root extends Component {
                     <span className="text-muted">
                         &copy; 2019-2021 Jackson Rakena. All rights reserved. <br />
                         Build <code>{this.props.version}</code>. <br />
-                        <img src="https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344" />
+                        <a href="https://developer.nytimes.com/"><img src="https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344" /></a>
                     </span>
                 </div>
             </div>
