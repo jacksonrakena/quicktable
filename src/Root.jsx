@@ -22,7 +22,9 @@ export default class Root extends Component {
             <div className="qt-footer">
                 <div className="container-fluid">
                     <span className="text-muted">
-                        &copy; 2019-2021 Jackson Rakena. Build <code>{this.props.version}</code>
+                        &copy; 2019-2021 Jackson Rakena. All rights reserved. <br />
+                        Build <code>{this.props.version}</code>. <br />
+                        <img src="https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344" />
                     </span>
                 </div>
             </div>

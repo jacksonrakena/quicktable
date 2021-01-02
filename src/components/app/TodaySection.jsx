@@ -34,9 +34,7 @@ export default class TodaySection extends Component {
         return <div>
             <h4>Today</h4>
             Welcome to Quicktable! <br />
-            It's {DateTime.fromObject({zone: 'Pacific/Auckland'}).toFormat('DDDD', {
-
-            })} in Wellington.
+            It's {DateTime.fromObject({zone: 'Pacific/Auckland'}).toFormat('DDDD')} in Wellington.
             <br />
             <br />
             <div>
