@@ -3,15 +3,39 @@ import { Component } from 'react';
 import App from './components/App';
 import { Route, Switch } from 'react-router';
 import { BrowserRouter, NavLink } from 'react-router-dom';
+import { DateTime } from 'luxon';
 
 export default class Root extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            date: DateTime.fromObject({zone: 'Pacific/Auckland'}),
+            interval: setInterval(() => {
+                this.setState({date: DateTime.fromObject({zone: 'Pacific/Auckland'})})
+            }, 60000)
+        }
+    }
+    componentWillUnmount() {
+        clearInterval(this.state.interval)
+    }
     render() {
         return <BrowserRouter>
             <div>
-                <nav class="navbar navbar-expand-lg navbar-light" style={{
+                <nav class="navbar  navbar-light" style={{
                     backgroundImage: 'linear-gradient(to bottom right, rgba(255,255,126,1), rgba(255,255,126,0))'
                 }}>
-                    <NavLink class="navbar-brand" to="/">Quicktable, Scots College</NavLink>
+                     <NavLink class="navbar-brand" to="/"><img alt="QT logo" src="/ms-icon-310x310.png" style={{
+                        justifySelf: 'center',
+                        width: '2em'
+                     }}/> Quicktable, Scots College</NavLink><br />
+                     <span style={{
+                         color: 'gray',
+                     }}><i className="far fa-clock" style={{
+                         justifySelf: 'center',
+                         display: 'inline',
+                         width: '100%',
+                         textAlign: 'center'
+                     }}></i> {this.state.date.toFormat('DDDD, h:mm a (ZZZZZ)')}</span>
                 </nav>
                 <Switch>
                     <Route exact path="/" component={Homepage} />

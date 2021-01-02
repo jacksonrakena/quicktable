@@ -33,13 +33,9 @@ export default class TodaySection extends Component {
     render() {
         return <div>
             <h4>Today</h4>
-            Welcome to Quicktable! <br />
-            It's {DateTime.fromObject({zone: 'Pacific/Auckland'}).toFormat('DDDD')} in Wellington.
+            Welcome to Quicktable!
             <br />
             <br />
-            <div>
-                Here's the quote of the day:
-            </div>
             <span style={{
                 color: 'gray',
                 marginTop: '10px'
