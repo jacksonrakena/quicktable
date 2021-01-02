@@ -5,9 +5,10 @@ import Root from './Root';
 import reportWebVitals from './reportWebVitals';
 import "react-datepicker/dist/react-datepicker.css"
 
+let currentVersion = process.env.REACT_APP_COMMIT_REF;
 ReactDOM.render(
   <React.StrictMode>
-    <Root />
+    <Root version={currentVersion.slice(0, 5)} />
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -16,8 +17,6 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-
-let currentVersion = process.env.REACT_APP_COMMIT_REF;
 
 if (process.env.NODE_ENV === "production") {
   document.addEventListener("visibilitychange", () => {

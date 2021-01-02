@@ -40,13 +40,6 @@ export default class App extends Component {
                     </div>
                 </div>
             </div>
-            <div className="qt-footer">
-                <div className="container-fluid">
-                    <span className="text-muted">
-                        &copy; 2019-2021 Jackson Rakena
-                    </span>
-                </div>
-            </div>
         </div>
     }
 }

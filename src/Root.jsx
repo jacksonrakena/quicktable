@@ -19,6 +19,13 @@ export default class Root extends Component {
                     <Route component={Unknown} />
                 </Switch>
             </div>
+            <div className="qt-footer">
+                <div className="container-fluid">
+                    <span className="text-muted">
+                        &copy; 2019-2021 Jackson Rakena. Build <code>{this.props.version}</code>
+                    </span>
+                </div>
+            </div>
         </BrowserRouter>
     }
 }
