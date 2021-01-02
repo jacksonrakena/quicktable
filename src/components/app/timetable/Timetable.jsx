@@ -33,14 +33,16 @@ export default class Timetable extends Component {
             TeacherID: 0
         }).then(d => {
             var data = d.data.d;
+            console.log(data)
             this.setState({
                 classes: data.filter(c => {
-                    return c.SubjectDesc
+                    return c.SubjectDesc || c.Heading
                 }).map(c => {
                     return {
                         name: c.SubjectDesc,
                         room: c.Room,
                         teacher: c.Teacher,
+                        email: c.TeacherEmail,
                         startTime: c.FromTime,
                         endTime: c.ToTime,
                         slot: c.Heading,

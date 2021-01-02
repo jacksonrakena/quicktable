@@ -18,17 +18,24 @@ export default class TimetableClass extends Component {
     
     render() {
         return <div style={{
-            backgroundColor: this.generateColorForClass(this.props.entry.name) + 'AA',
+            backgroundColor: this.generateColorForClass(this.props.entry.name || this.props.entry.slot) + 'AA',
             listStyle: 'none'
         }} className="p-2">
             <div className="d-flex flex-row justify-content-between">
                 <span>{this.props.entry.startTimeF.toFormat('h:mm a')} </span>
-                <b>{this.props.entry.class} {this.props.entry.name}</b>
+                <b>{this.props.entry.name ? <span>
+                    {this.props.entry.class} {this.props.entry.name}
+                </span> : <span>
+                    {this.props.entry.slot}
+                </span>}</b>
                 <span>{this.props.entry.endTimeF.toFormat('h:mm a')}</span>
             </div>
-            <div className="text-center">
-                Room {this.props.entry.room} - {this.props.entry.teacher}
-            </div>
+            {this.props.entry.room && this.props.entry.room != " " ? 
+                <div className="text-center">
+                    Room {this.props.entry.room} - {this.props.entry.teacher} <a style={{
+                        color: 'black'
+                    }} href={"mailto:"+this.props.entry.email}><i class="far fa-envelope"></i></a>
+                </div> : ""}
         </div>
     }
 }
