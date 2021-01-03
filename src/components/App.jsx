@@ -3,7 +3,6 @@ import '../Root.css';
 import './App.css';
 import TodaySection from "./app/TodaySection";
 import Timetable from "./app/timetable/Timetable";
-import NewsSection from "./app/NewsSection";
 
 class ResourceLink extends Component {
     constructor(props) {
@@ -53,7 +52,6 @@ export default class App extends Component {
                                 })}
                             </ul>
                         </div>
-                        <NewsSection />
                     </div>
                 </div>
             </div>
