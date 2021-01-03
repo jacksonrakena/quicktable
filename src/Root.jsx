@@ -154,6 +154,8 @@ class Homepage extends Component {
                                     Password: this.state.password,
                                     SecurityKey: ""
                                 }).then(d => {
+                                    console.log('Authorized')
+                                    console.log(d)
                                     this.props.history.push('/app/' + d.data.d.filter(f => f.Key === "MEMBER_ID")[0].Value)
                                 }).catch(c => {
                                     this.setState({ loading: false, error: c.response.data.Message })

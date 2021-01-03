@@ -30,12 +30,15 @@ export default class TimetableClass extends Component {
                 </span>}</b>
                 <span>{this.props.entry.endTimeF.toFormat('h:mm a')}</span>
             </div>
-            {this.props.entry.room && this.props.entry.room !== " " ? 
+            {this.props.entry.room && this.props.entry.room !== " " ? <div>
                 <div className="text-center">
-                    Room {this.props.entry.room} - {this.props.entry.teacher} <a style={{
+                    Room {this.props.entry.room}
+                </div>
+                <div className="text-center">
+                    {this.props.entry.teacher} <a style={{
                         color: 'black'
                     }} href={"mailto:"+this.props.entry.email}><i class="far fa-envelope"></i></a>
-                </div> : ""}
+                </div></div> : ""}
         </div>
     }
 }

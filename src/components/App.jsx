@@ -11,7 +11,9 @@ class ResourceLink extends Component {
 
     render() {
         return <li>
-            <a href={this.props.url} target="_blank">{this.props.name}</a>
+            <a style={{
+                color: '#b5ad4c'
+            }} href={this.props.url} target="_blank">{this.props.name}</a>
         </li>
     }
 }
