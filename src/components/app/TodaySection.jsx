@@ -1,6 +1,5 @@
 import { Component } from "react";
 import axios from 'axios';
-import { DateTime } from 'luxon';
 
 export default class TodaySection extends Component {
     constructor(props) {
