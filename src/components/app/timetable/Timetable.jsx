@@ -157,15 +157,17 @@ export default class Timetable extends Component {
             <div>
                 {timetablePanel}
                 <div className="d-flex flex-row mt-3 justify-content-between">
-                    <button className="p-2 btn btn-primary" onClick={this.backwards}>Back</button>
+                    <button className="p-2 btn btn-warning" onClick={this.backwards}>Back</button>
                     
                     {this.state.isDateEditorOpen ? <div className="p-2">
                         <ReactDatePicker selected={this.state.date.toJSDate()} onChange={this.setDate} onCalendarClose={this.toggleDateEditor} startOpen={true}/>
-                    </div> : <a href='#' className="p-2" onClick={this.toggleDateEditor}>
+                    </div> : <a href='#' className="p-2" style={{
+                                color: '#b5ad4c'
+                                }} onClick={this.toggleDateEditor}>
                         {this.state.date.toFormat('DDDD')}
                     </a>}
 
-                    <button className="p-2 btn btn-primary" onClick={this.advance}>
+                    <button className="p-2 btn btn-warning" onClick={this.advance}>
                         Next
                     </button>
                 </div>

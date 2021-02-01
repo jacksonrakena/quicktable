@@ -3,7 +3,6 @@ import '../Root.css';
 import './App.css';
 import TodaySection from "./app/TodaySection";
 import Timetable from "./app/timetable/Timetable";
-import NewsSection from "./app/NewsSection";
 
 class ResourceLink extends Component {
     constructor(props) {
@@ -12,7 +11,9 @@ class ResourceLink extends Component {
 
     render() {
         return <li>
-            <a href={this.props.url} target="_blank">{this.props.name}</a>
+            <a style={{
+                color: '#b5ad4c'
+            }} href={this.props.url} target="_blank">{this.props.name}</a>
         </li>
     }
 }
@@ -53,7 +54,6 @@ export default class App extends Component {
                                 })}
                             </ul>
                         </div>
-                        <NewsSection />
                     </div>
                 </div>
             </div>
