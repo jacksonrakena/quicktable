@@ -1,48 +1,10 @@
 import { Component } from "react";
-import axios from 'axios';
-import { DateTime } from 'luxon';
 
 export default class TodaySection extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            quote: {
-                text: 'Loading quote...',
-                source: 'Unknown'
-            }
-        }
-    }
-    componentDidMount() {
-        axios.get('https://quotes.rest/qod?category=students&language=en', {headers: {accept: 'application/json'}}).then(d => {
-            var data = d.data.contents.quotes[0]
-            this.setState({
-                quote: {
-                    text: data.quote,
-                    source: data.author
-                }
-            })
-        }).catch(e => {
-            this.setState({
-                quote: {
-                    text: 'Failed to load quote.'
-                }
-            })
-        })
-    }
-
     render() {
         return <div>
             <h4>Today</h4>
-            Welcome to Quicktable!
-            <br />
-            <br />
-            <span style={{
-                color: 'gray',
-                marginTop: '10px'
-            }}>
-                “{this.state.quote.text}{this.state.quote.text.endsWith(".") ? "" : "."}”<br /></span><span>
-                <i>—{this.state.quote.source}</i>
-            </span>
+            Welcome to Term 1 of 2021. Information about the start of school can be found on the <a href="https://www.instagram.com/scots.co.nz/">scots.co.nz</a> Instagram page.
         </div>
     }
 }
