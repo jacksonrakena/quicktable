@@ -107,7 +107,7 @@ class Homepage extends Component {
                     <label for="id">Your student ID number (or photocopier ID)</label>
                     <input id='id' style={{
                         width: '250px'
-                    }} className="form-control" type="text" placeholder="5 or 6 digits" onChange={(v, d) => {
+                    }} className="form-control" inputMode="numeric" type="number" placeholder="5 or 6 digits" onChange={(v, d) => {
                         this.setState({
                             idNumber: v.target.value
                         })
