@@ -71,7 +71,8 @@ class Homepage extends Component {
             id: '',
             username: '',
             password: '',
-            loading: false
+            loading: false,
+            idNumber: ''
         }
 
         this.updateValue = this.updateValue.bind(this)
@@ -97,10 +98,32 @@ class Homepage extends Component {
                 <br />
                 <br />
 
-                All you'll need to jump in is your school username and password.
+                All you'll need to jump in is your school username and password, <strong>or</strong> your student ID number.
             </div>
             <br />
+            <form className="mb-5 mt-2">
+                <b>Option 1: Your Student ID Number (Photocopier ID)</b>
+                <div class="form-group">
+                    <label for="id">Your student ID number (or photocopier ID)</label>
+                    <input id='id' style={{
+                        width: '250px'
+                    }} className="form-control" type="text" placeholder="5 or 6 digits" onChange={(v, d) => {
+                        this.setState({
+                            idNumber: v.target.value
+                        })
+                    }} />
+                    
+                </div>
+                <button type="submit" onClick={(d) => {
+                    d.preventDefault()
+                    this.props.history.push('/app/' + this.state.idNumber)
+                        }} className="btn btn-danger mb-1" disabled={this.state.loading}>{this.state.loading ? <div>
+                            <span>Connecting...</span>
+                        </div> : "Connect to Scots College"}</button>
+            </form>
+            <hr />
             <form>
+                <b>Option 2: Your School Username And Password</b>
                 <div class="text-danger mb-3">
                     <b>{this.state.error}</b>
                 </div>
@@ -161,7 +184,6 @@ class Homepage extends Component {
                                     this.setState({ loading: false, error: c.response.data.Message })
                                 })
                             }
-                        }} style={{
                         }} className="btn btn-danger mb-1" disabled={this.state.loading}>{this.state.loading ? <div>
                             <span>Connecting...</span>
                         </div> : "Connect to Scots College"}</button>
