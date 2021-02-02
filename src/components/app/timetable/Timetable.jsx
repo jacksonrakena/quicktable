@@ -49,7 +49,8 @@ export default class Timetable extends Component {
                         color: '',
                         class: c.Class,
                         startTimeF: DateTime.fromFormat(c.FromTime, "H'.'mm"),
-                        endTimeF: DateTime.fromFormat(c.ToTime, "H'.'mm")
+                        endTimeF: DateTime.fromFormat(c.ToTime, "H'.'mm"),
+                        day: c.Day
                     }
                 }),
                 done: true
@@ -104,15 +105,15 @@ export default class Timetable extends Component {
         var difference = date.diff(DateTime.local())
         var dayDifference = Math.round(difference.shiftTo('days').days)
         if (dayDifference == 0) {
-            return 'Today'
+            return 'Today (' + date.toFormat('d MMMM') + ')'
         } else if (dayDifference == 1) {
-            return 'Tomorrow'
+            return 'Tomorrow (' + date.toFormat('d MMMM') + ')'
         } else if (dayDifference == -1) {
-            return 'Yesterday'
+            return 'Yesterday (' + date.toFormat('d MMMM') + ')'
         } else if (date.weekNumber == DateTime.local().minus({ weeks: 1}).weekNumber) {
-            return 'Last ' + date.toFormat('EEEE')
+            return 'Last ' + date.toFormat('EEEE') + ' (' + date.toFormat('d MMMM') + ')'
         } else if (date.weekNumber == DateTime.local().plus({ weeks: 1 }).weekNumber) {
-            return 'Next ' + date.toFormat('EEEE')
+            return 'Next ' + date.toFormat('EEEE') + ' (' + date.toFormat('d MMMM') + ')'
         }
         return date.toFormat('DDDD')
     }
@@ -140,6 +141,13 @@ export default class Timetable extends Component {
         } else {
             timetablePanel = <div>
                 <div className="d-flex flex-column justify-content-between">
+                <div style={{
+            backgroundColor: 'grey',
+            color: 'white',
+            listStyle: 'none'
+        }} className="p-2 text-center">
+            {this.state.classes[0].day > 5 ? "Week B" : "Week A"}
+            </div>
                 {this.state.classes.map((element, i0) => {
                     return <TimetableClass entry={element} />
                 })}
