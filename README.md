@@ -6,5 +6,5 @@ Quicktable is a React Progressive Web Application (PWA) timetable manager for st
 
 
 ### Copyright
-(**former**) &copy; 2019-2021 Jackson Rakena, all rights previously reserved.  
+(**former**) &copy; 2019-2021 Jackson Rakena *et al.*, all rights previously reserved.  
 &copy; 2021-present Scots College Student Digital Leaders, under the GNU GPLv3 license. 
