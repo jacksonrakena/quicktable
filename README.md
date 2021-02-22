@@ -1,10 +1,10 @@
-# Quicktable
-React SPA-based rewrite of an iOS app I made.
+# ⭐️ Quicktable
+Quicktable is a React Progressive Web Application (PWA) timetable manager for students of Scots College. It uses the open PCSchool timetable API to fetch users' timetables using their provided student ID number.
 
 ### How to run
-Don't run it. It won't work for you.
+`npm install` and `npm start` will start the CRA development server.
 
 
 ### Copyright
-&copy; 2019-2021 Jackson Rakena. All rights reserved.  
-Quicktable is not free/open source.
+(**former**) &copy; 2019-2021 Jackson Rakena, all rights previously reserved.  
+&copy; 2021-present Scots College Student Digital Leaders, under the GNU GPLv3 license. 
