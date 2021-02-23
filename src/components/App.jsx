@@ -1,19 +1,13 @@
 import { Component } from "react";
 import '../Root.css';
-import './App.css';
+import styles from './App.css';
 import TodaySection from "./app/TodaySection";
 import Timetable from "./app/timetable/Timetable";
 
 class ResourceLink extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return <li>
-            <a style={{
-                color: '#b5ad4c'
-            }} href={this.props.url} target="_blank">{this.props.name}</a>
+            <a href={this.props.url} target="_blank">{this.props.name}</a>
         </li>
     }
 }

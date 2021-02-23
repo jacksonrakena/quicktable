@@ -1,7 +1,9 @@
 import { Component } from "react";
+const randomColor = require('randomcolor');
 
 export default class TimetableClass extends Component {
     generateColorForClass(name) {
+        /*
         var hash = 0;
         if (name.length === 0) return hash;
         for (var i = 0; i < name.length; i++) {
@@ -13,7 +15,11 @@ export default class TimetableClass extends Component {
             var value = (hash >> (i * 8)) & 255;
             color += ('00' + value.toString(16)).substr(-2);
         }
-        return color;
+        return color;*/
+        return randomColor({
+            seed: name,
+            luminosity: 'light'
+        })
     }
     
     render() {
