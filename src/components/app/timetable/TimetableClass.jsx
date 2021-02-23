@@ -25,7 +25,8 @@ export default class TimetableClass extends Component {
     render() {
         return <div style={{
             backgroundColor: this.generateColorForClass(this.props.entry.name || this.props.entry.slot) + 'AA',
-            listStyle: 'none'
+            listStyle: 'none',
+            border: '1px solid white'
         }} className="p-2">
             <div className="d-flex flex-row justify-content-between">
                 <span>{this.props.entry.startTimeF.toFormat('h:mm a')} </span>

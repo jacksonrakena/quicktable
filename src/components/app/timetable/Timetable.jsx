@@ -34,25 +34,33 @@ export default class Timetable extends Component {
         }).then(d => {
             var data = d.data.d;
             console.log(data)
+            data = data.filter(c => {
+                return c.SubjectDesc || c.Heading
+            }).map(c => {
+                return {
+                    name: c.SubjectDesc,
+                    room: c.Room,
+                    teacher: c.Teacher,
+                    email: c.TeacherEmail,
+                    startTime: c.FromTime,
+                    endTime: c.ToTime,
+                    slot: c.Heading,
+                    color: '',
+                    class: c.Class,
+                    startTimeF: DateTime.fromFormat(c.FromTime, "H'.'mm"),
+                    endTimeF: DateTime.fromFormat(c.ToTime, "H'.'mm"),
+                    day: c.Day
+                }
+            })
+            if (data.length !== 0) {
+                data.splice(2, 0, {
+                    name: 'Interval',
+                    startTimeF: DateTime.fromFormat('10.45', "H'.'mm"),
+                    endTimeF: DateTime.fromFormat('11.15', "H'.'mm")
+                })
+            }
             this.setState({
-                classes: data.filter(c => {
-                    return c.SubjectDesc || c.Heading
-                }).map(c => {
-                    return {
-                        name: c.SubjectDesc,
-                        room: c.Room,
-                        teacher: c.Teacher,
-                        email: c.TeacherEmail,
-                        startTime: c.FromTime,
-                        endTime: c.ToTime,
-                        slot: c.Heading,
-                        color: '',
-                        class: c.Class,
-                        startTimeF: DateTime.fromFormat(c.FromTime, "H'.'mm"),
-                        endTimeF: DateTime.fromFormat(c.ToTime, "H'.'mm"),
-                        day: c.Day
-                    }
-                }),
+                classes: data,
                 done: true
             })
         }).catch(c => {
