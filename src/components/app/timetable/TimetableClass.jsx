@@ -32,7 +32,9 @@ export default class TimetableClass extends Component {
                 <b>{this.props.entry.name ? <span>
                     {this.props.entry.class} {this.props.entry.name}
                 </span> : <span>
-                    {this.props.entry.slot}
+                    {
+                        this.props.entry.slot.startsWith('Lesson ') ? <span>Study Period</span> : <span>{this.props.entry.slot}</span>
+                    }
                 </span>}</b>
                 <span>{this.props.entry.endTimeF.toFormat('h:mm a')}</span>
             </div>

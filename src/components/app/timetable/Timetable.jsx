@@ -168,7 +168,7 @@ export default class Timetable extends Component {
                 marginBottom: '10px',
                 color: 'grey'
             }}>
-                {this.createRelativeDateDisplay(this.state.date)} {this.state.date.ordinal !== DateTime.local().ordinal ? <a href="#" style={{color: '#b5ad4c'}} onClick={this.setToday.bind(this)}>Today</a> : <></>}
+                {this.createRelativeDateDisplay(this.state.date)} {this.state.date.ordinal !== DateTime.local().ordinal ? <a href="#" onClick={this.setToday.bind(this)}>Today</a> : <></>}
             </div>
             <div>
                 {timetablePanel}
