@@ -23,7 +23,7 @@ export default class Root extends Component {
         return <BrowserRouter>
             <div>
                 <nav class="navbar  navbar-light" style={{
-                    backgroundImage: 'linear-gradient(to bottom right, rgba(255,255,126,1), rgba(255,255,126,0))'
+                    backgroundImage: 'linear-gradient(to bottom right, rgba(154, 147, 242, 0.667), rgba(154, 147, 242, 0))'
                 }}>
                     <NavLink class="navbar-brand" to="/"><img alt="QT logo" src="/master-transparent.png" style={{
                         justifySelf: 'center',

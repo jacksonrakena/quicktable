@@ -181,7 +181,7 @@ export default class Timetable extends Component {
             <div>
                 {timetablePanel}
                 <div className="d-flex flex-row mt-3 justify-content-between">
-                    <button className="p-2 btn btn-warning" onClick={this.backwards}>Back</button>
+                    <button className="p-2 btn" style={{backgroundColor: 'rgba(154, 147, 242, 0.667)'}} onClick={this.backwards}>Back</button>
                     
                     {this.state.isDateEditorOpen ? <div className="p-2" id='date-editor'>
                         <ReactDatePicker selected={this.state.date.toJSDate()} onChange={this.setDate} onCalendarClose={this.toggleDateEditor} startOpen={true} onCalendarOpen={this.onCalendarOpen}/>
@@ -189,7 +189,7 @@ export default class Timetable extends Component {
                         {this.state.date.toFormat('DDDD')}
                     </a>}
 
-                    <button className="p-2 btn btn-warning" id='date-editor-btn' onClick={this.advance}>
+                    <button className="p-2 btn" style={{backgroundColor: 'rgba(154, 147, 242, 0.667)'}} id='date-editor-btn' onClick={this.advance}>
                         Next
                     </button>
                 </div>

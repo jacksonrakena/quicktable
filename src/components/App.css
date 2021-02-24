@@ -7,7 +7,8 @@
     justify-self: center;
 }
 a:hover {
-    background-color: #b5ad4c;
+    background-color: rgba(104, 95, 233, 0.849);
+    xbackground-color: #b5ad4c;
     color: white;
     padding: 3px;
     text-decoration: none;
@@ -15,5 +16,6 @@ a:hover {
 }
 
 a {
-    color: #b5ad4c;
+    xcolor: #b5ad4c;
+    color: rgba(104, 95, 233, 0.849);
 }
