@@ -37,29 +37,55 @@ export default class Timetable extends Component {
             data = data.filter(c => {
                 return c.SubjectDesc || c.Heading
             }).map(c => {
-                return {
+                var data = {
                     name: c.SubjectDesc,
-                    room: c.Room,
-                    teacher: c.Teacher,
+                    teacher: c.Teacher ? <span>
+                        {c.Teacher} <a style={{
+                        color: 'black'
+                    }} href={"mailto:"+c.TeacherEmail}><i class="far fa-envelope"></i></a>
+                    </span> : <span>&nbsp;</span>,
                     email: c.TeacherEmail,
                     startTime: c.FromTime,
                     endTime: c.ToTime,
                     slot: c.Heading,
-                    color: '',
                     class: c.Class,
                     startTimeF: DateTime.fromFormat(c.FromTime, "H'.'mm"),
                     endTimeF: DateTime.fromFormat(c.ToTime, "H'.'mm"),
                     day: c.Day,
                     isInterval: false,
-                    isLunch: c.Heading && c.Heading.startsWith('Lunch')
+                    isLunch: c.Heading && c.Heading.includes('Lunch') && !c.Heading.includes('Chapel') && !c.Heading.includes('Assembly'),
+                    isAssembly: c.Heading && c.Heading.includes('Assembly'),
+                    isChapel: c.Heading && c.Heading.includes('Chapel'),
+                    isStudyPeriod: !c.Teacher && !c.Room && !c.SubjectDesc,
+                };
+                data.isSpecial = data.isInterval || data.isLunch || data.isAssembly || data.isChapel;
+                data.room = (c.Room && !data.isLunch && !data.isInterval && !data.isAssembly && !data.isChapel && !data.isStudyPeriod) ? <span>Room {c.Room}</span> : <span>&nbsp;</span>;
+                return data;
+            })
+            data.forEach((value, key) => {
+                if (value.endTime === '13.15' && data[key+1].startTime === '14.00') {
+                    data.splice(key+1, 0, {
+                        name: 'Lunch',
+                        isLunch: true,
+                        isInterval: false,
+                        isSpecial: true,
+                        startTimeF: DateTime.fromFormat('13.15', "H'.'mm"),
+                        endTimeF: DateTime.fromFormat('14.00', "H'.'mm"),
+                        getIsNoColor: () => true,
+                        noDisplayRoom: true
+                    })
                 }
             })
             if (data.length !== 0) {
                 data.splice(2, 0, {
                     name: 'Interval',
                     isInterval: true,
+                    isNoColor: true,
+                    isSpecial: true,
                     startTimeF: DateTime.fromFormat('10.45', "H'.'mm"),
-                    endTimeF: DateTime.fromFormat('11.15', "H'.'mm")
+                    endTimeF: DateTime.fromFormat('11.15', "H'.'mm"),
+                    getIsNoColor: () => true,
+                    noDisplayRoom: true
                 })
             }
             this.setState({
