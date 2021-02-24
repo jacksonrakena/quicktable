@@ -29,9 +29,7 @@ export default class Root extends Component {
                         justifySelf: 'center',
                         width: '2em'
                     }} /> Quicktable, Scots College</NavLink><br />
-                    <span style={{
-                        color: 'gray',
-                    }}><i className="far fa-clock" style={{
+                    <span><i className="far fa-clock" style={{
                         justifySelf: 'center',
                         display: 'inline',
                         width: '100%',
