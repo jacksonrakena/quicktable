@@ -23,11 +23,18 @@ export default class TimetableClass extends Component {
     }
     
     render() {
-        return <div style={{
+        var styles = {
             backgroundColor: this.generateColorForClass(this.props.entry.name || this.props.entry.slot) + 'AA',
             listStyle: 'none',
-            border: '1px solid white'
-        }} className="p-2">
+            border: '1px solid white',
+        }
+        if (this.props.entry.isInterval || this.props.entry.isLunch) {
+            //styles.marginTop = '10px';
+            //styles.marginBottom = '10px';
+            //styles.borderTop = styles.borderBottom =  '5px solid black';
+            styles.backgroundColor = 'white';
+        }
+        return <div style={styles} className={"p-2 align-middle"}>
             <div className="d-flex flex-row justify-content-between">
                 <span>{this.props.entry.startTimeF.toFormat('h:mm a')} </span>
                 <b>{this.props.entry.name ? <span>
@@ -48,6 +55,11 @@ export default class TimetableClass extends Component {
                         color: 'black'
                     }} href={"mailto:"+this.props.entry.email}><i class="far fa-envelope"></i></a>
                 </div></div> : ""}
+                {(this.props.entry.isInterval) || (!this.props.entry.name)? <div><div className="text-center">
+                    &nbsp;
+                </div><div className="text-center">
+                &nbsp;
+                </div></div> : <div></div>}
         </div>
     }
 }

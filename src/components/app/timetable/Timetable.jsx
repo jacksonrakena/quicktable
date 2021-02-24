@@ -49,12 +49,15 @@ export default class Timetable extends Component {
                     class: c.Class,
                     startTimeF: DateTime.fromFormat(c.FromTime, "H'.'mm"),
                     endTimeF: DateTime.fromFormat(c.ToTime, "H'.'mm"),
-                    day: c.Day
+                    day: c.Day,
+                    isInterval: false,
+                    isLunch: c.Heading && c.Heading.startsWith('Lunch')
                 }
             })
             if (data.length !== 0) {
                 data.splice(2, 0, {
                     name: 'Interval',
+                    isInterval: true,
                     startTimeF: DateTime.fromFormat('10.45', "H'.'mm"),
                     endTimeF: DateTime.fromFormat('11.15', "H'.'mm")
                 })
