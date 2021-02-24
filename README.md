@@ -22,4 +22,4 @@ Quicktable is designed to run as a serverless (static) web app on Netlify, Verce
 
 ## Copyright
 (**Formerly**) &copy; 2019-2021 Jackson Rakena *et al.*, all rights previously reserved.  
-&copy; 2021-present Scots College Student Digital Leaders, under the GNU GPLv3 license. 
+&copy; 2021-present Scots College Student Digital Committee (Komiti Matihiko), under the GNU GPLv3 license. 
