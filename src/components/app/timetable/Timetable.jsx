@@ -150,11 +150,11 @@ export default class Timetable extends Component {
         var difference = date.diff(DateTime.local())
         var dayDifference = Math.round(difference.shiftTo('days').days)
         if (dayDifference == 0) {
-            return 'Today (' + date.toFormat('d MMMM') + ')'
+            return 'Today'
         } else if (dayDifference == 1) {
-            return 'Tomorrow (' + date.toFormat('d MMMM') + ')'
+            return 'Tomorrow'
         } else if (dayDifference == -1) {
-            return 'Yesterday (' + date.toFormat('d MMMM') + ')'
+            return 'Yesterday'
         } else if (date.weekNumber == DateTime.local().minus({ weeks: 1}).weekNumber) {
             return 'Last ' + date.toFormat('EEEE') + ' (' + date.toFormat('d MMMM') + ')'
         } else if (date.weekNumber == DateTime.local().plus({ weeks: 1 }).weekNumber) {
@@ -191,7 +191,7 @@ export default class Timetable extends Component {
             color: 'white',
             listStyle: 'none'
         }} className="p-2 text-center">
-            {this.state.classes[0].day > 5 ? "Week B" : "Week A"}
+            {this.state.classes[0].day > 5 ? "Week B" : "Week A"} - {this.state.date.toFormat('DDDD')}
             </div>
                 {this.state.classes.map((element, i0) => {
                     return <TimetableClass entry={element} />
