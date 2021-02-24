@@ -184,14 +184,33 @@ export default class Timetable extends Component {
                 <div class="jumbotron my-auto align-self-center">No classes found.</div>
             </div>
         } else {
-            timetablePanel = <div>
+            timetablePanel = <div style={{
+            }}>
                 <div className="d-flex flex-column justify-content-between">
                 <div style={{
             backgroundColor: 'grey',
             color: 'white',
             listStyle: 'none'
         }} className="p-2 text-center">
-            {this.state.classes[0].day > 5 ? "Week B" : "Week A"} - {this.state.date.toFormat('DDDD')}
+            <div className="d-flex flex-row justify-content-between">
+                <div>
+                    <button className="p-2 btn" style={{backgroundColor: 'rgba(154, 147, 242, 0.667)',
+                        color: 'white'}} onClick={this.backwards}>Back</button>
+                </div>
+                <strong className="align-self-center">
+                {this.state.isDateEditorOpen ? <div className="p-2" id='date-editor'>
+                        <ReactDatePicker selected={this.state.date.toJSDate()} onChange={this.setDate} onCalendarClose={this.toggleDateEditor} startOpen={true} onCalendarOpen={this.onCalendarOpen}/>
+                    </div> : <a href='#' className="p-2" onClick={this.toggleDateEditor} style={{color: 'white'}}>
+                    {this.state.classes[0].day > 5 ? "Week B" : "Week A"} - {this.state.date.toFormat('DDDD')}
+                    </a>}
+
+                </strong>
+                <div>
+                <button className="p-2 btn" style={{backgroundColor: 'rgba(154, 147, 242, 0.667)', color: 'white'}} id='date-editor-btn' onClick={this.advance}>
+                        Next
+                    </button>
+                </div>
+            </div>
             </div>
                 {this.state.classes.map((element, i0) => {
                     return <TimetableClass entry={element} />
@@ -200,28 +219,18 @@ export default class Timetable extends Component {
             </div>
         }
         return <div>
-            <h4>Timetable</h4>
-            <div style={{
+            <h4>Timetable {this.state.date.ordinal !== DateTime.local().ordinal ? <a href="#" onClick={this.setToday.bind(this)}>Today</a> : <></>}</h4>
+            {/*<div style={{
                 marginBottom: '10px',
-                color: 'grey'
+                color: 'grey',
+                textAlign: 'center',
+                fontSize: 'larger',
+                fontWeight: 'bold'
             }}>
                 {this.createRelativeDateDisplay(this.state.date)} {this.state.date.ordinal !== DateTime.local().ordinal ? <a href="#" onClick={this.setToday.bind(this)}>Today</a> : <></>}
-            </div>
-            <div>
+        </div>*/}
+            <div style={{marginTop: '20px'}}>
                 {timetablePanel}
-                <div className="d-flex flex-row mt-3 justify-content-between">
-                    <button className="p-2 btn" style={{backgroundColor: 'rgba(154, 147, 242, 0.667)'}} onClick={this.backwards}>Back</button>
-                    
-                    {this.state.isDateEditorOpen ? <div className="p-2" id='date-editor'>
-                        <ReactDatePicker selected={this.state.date.toJSDate()} onChange={this.setDate} onCalendarClose={this.toggleDateEditor} startOpen={true} onCalendarOpen={this.onCalendarOpen}/>
-                    </div> : <a href='#' className="p-2" onClick={this.toggleDateEditor}>
-                        {this.state.date.toFormat('DDDD')}
-                    </a>}
-
-                    <button className="p-2 btn" style={{backgroundColor: 'rgba(154, 147, 242, 0.667)'}} id='date-editor-btn' onClick={this.advance}>
-                        Next
-                    </button>
-                </div>
             </div>
         </div>
     }
