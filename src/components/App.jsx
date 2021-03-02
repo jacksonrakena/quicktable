@@ -23,7 +23,8 @@ export default class App extends Component {
             'School spider': 'https://spider.scotscollege.school.nz/Spider2011/Pages/Home.aspx',
             'NZQA Results': 'https://secure.nzqa.govt.nz/for-learners/records/index.do',
             'Education Perfect': 'https://www.languageperfect.com/app/#/dashboard',
-            'Printing (Scots Wi-Fi only)': 'http://scotsprn03:9191/user',
+            'Anonymous Problem Form': 'https://forms.office.com/Pages/ResponsePage.aspx?id=4UXEQo29zUinql1hG4EBcw-cgxuQRblHiPNDV08vuEFUOFhBRFlVRko5SElQVTdTV0RVWVRJMU45Ui4u',
+            'School Mental Health Resources': 'https://www.scotscollege.school.nz/middle-school/pastoral-care/',
             'Career Central credit tracker': 'https://app.careercentral.school.nz/my-credits'
         }
     }
