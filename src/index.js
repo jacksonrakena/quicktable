@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Root from './Root';
+import Root from './components/Root';
 import reportWebVitals from './reportWebVitals';
 import "react-datepicker/dist/react-datepicker.css"
 

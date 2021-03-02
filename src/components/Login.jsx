@@ -1,90 +1,24 @@
-import './Root.css';
 import { Component } from 'react';
-import App from './components/App';
-import { Route, Switch } from 'react-router';
-import { BrowserRouter, NavLink } from 'react-router-dom';
-import { DateTime } from 'luxon';
 import axios from 'axios';
 
-export default class Root extends Component {
+export class Login extends Component {
     constructor(props) {
-        super(props)
-        this.state = {
-            date: DateTime.fromObject({ zone: 'Pacific/Auckland' }),
-            interval: setInterval(() => {
-                this.setState({ date: DateTime.fromObject({ zone: 'Pacific/Auckland' }) })
-            }, 60000)
-        }
-    }
-    componentWillUnmount() {
-        clearInterval(this.state.interval)
-    }
-    render() {
-        return <BrowserRouter>
-            <div>
-                <nav class="navbar  navbar-light" style={{
-                    backgroundImage: 'linear-gradient(to bottom right, rgba(154, 147, 242, 0.667), rgba(154, 147, 242, 0))'
-                }}>
-                    <NavLink class="navbar-brand" to="/"><img alt="QT logo" src="/master-transparent.png" style={{
-                        justifySelf: 'center',
-                        width: '2em'
-                    }} /> Quicktable, Scots College</NavLink><br />
-                    <span><i className="far fa-clock" style={{
-                        justifySelf: 'center',
-                        display: 'inline',
-                        width: '100%',
-                        textAlign: 'center'
-                    }}></i> {this.state.date.toFormat('DDDD, h:mm a (ZZZZZ)')}</span>
-                </nav>
-                <Switch>
-                    <Route exact path="/" component={Homepage} />
-                    <Route exact path="/app/:id" component={App} />
-                    <Route component={Unknown} />
-                </Switch>
-            </div>
-            <div className="qt-footer">
-                <div className="container-fluid">
-                    <span className="text-muted">
-                        &copy; 2019-2021 <a href="http://github.com/scotscollegenz">Scots College Digital Committee (Komiti Matihiko).</a><br />
-                        {/*}All rights reserved. Build <code>{this.props.version}</code>.<br />
-                        Made in New Zealand <img src="/img/nz_flag.svg" style={{
-                            height: '1em',
-                            width: 'auto',
-                            justifySelf: 'center'
-                        }}/>*/}
-                    </span>
-                </div>
-            </div>
-        </BrowserRouter>
-    }
-}
-
-class Unknown extends Component {
-    render() {
-        return <div>
-            That page was not found.
-        </div>
-    }
-}
-
-class Homepage extends Component {
-    constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             id: '',
             username: '',
             password: '',
             loading: false,
             idNumber: ''
-        }
+        };
 
-        this.updateValue = this.updateValue.bind(this)
+        this.updateValue = this.updateValue.bind(this);
     }
 
     updateValue(v, d) {
         this.setState({
             id: v.target.value
-        })
+        });
     }
 
     render() {
@@ -113,16 +47,16 @@ class Homepage extends Component {
                     }} className="form-control" inputMode="numeric" type="number" placeholder="5 or 6 digits" onChange={(v, d) => {
                         this.setState({
                             idNumber: v.target.value
-                        })
+                        });
                     }} />
-                    
+
                 </div>
                 <button type="submit" onClick={(d) => {
-                    d.preventDefault()
-                    this.props.history.push('/app/' + this.state.idNumber)
-                        }} className="btn btn-danger mb-1" disabled={this.state.loading}>{this.state.loading ? <div>
-                            <span>Connecting...</span>
-                        </div> : "Connect to Scots College"}</button>
+                    d.preventDefault();
+                    this.props.history.push('/app/' + this.state.idNumber);
+                }} className="btn btn-danger mb-1" disabled={this.state.loading}>{this.state.loading ? <div>
+                    <span>Connecting...</span>
+                </div> : "Connect to Scots College"}</button>
             </form>
             <hr />
             <form>
@@ -145,7 +79,7 @@ class Homepage extends Component {
                         <input type="text" className="form-control" id="usernameInput" onChange={(v, d) => {
                             this.setState({
                                 username: v.target.value
-                            })
+                            });
                         }} style={{
                             width: '200px !important'
                         }} placeholder="Username" />
@@ -163,7 +97,7 @@ class Homepage extends Component {
                     <input type="password" className="form-control" id="passwordInput" onChange={(v, d) => {
                         this.setState({
                             password: v.target.value
-                        })
+                        });
                     }} placeholder="Password" />
                     <small id="usernameHelp" className="form-text text-muted">
                         Your password is only sent to Scots College and is never saved.
@@ -171,26 +105,26 @@ class Homepage extends Component {
                 </div>
 
                 <div className="form-group">
-                        <button type="submit" onClick={(d) => {
-                            d.preventDefault()
-                            if (this.state.username && this.state.password) {
-                                this.setState({ loading: true })
-                                axios.post('https://spider.scotscollege.school.nz/Spider2011/Handlers/Login.asmx/GetWebLogin', {
-                                    UserName: this.state.username,
-                                    Password: this.state.password,
-                                    SecurityKey: ""
-                                }).then(d => {
-                                    console.log('Authorized')
-                                    console.log(d)
-                                    this.props.history.push('/app/' + d.data.d.filter(f => f.Key === "MEMBER_ID")[0].Value)
-                                }).catch(c => {
-                                    this.setState({ loading: false, error: c.response.data.Message })
-                                })
-                            }
-                        }} className="btn btn-danger mb-1" disabled={this.state.loading}>{this.state.loading ? <div>
-                            <span>Connecting...</span>
-                        </div> : "Connect to Scots College"}</button>
-                    </div>
+                    <button type="submit" onClick={(d) => {
+                        d.preventDefault();
+                        if (this.state.username && this.state.password) {
+                            this.setState({ loading: true });
+                            axios.post('https://spider.scotscollege.school.nz/Spider2011/Handlers/Login.asmx/GetWebLogin', {
+                                UserName: this.state.username,
+                                Password: this.state.password,
+                                SecurityKey: ""
+                            }).then(d => {
+                                console.log('Authorized');
+                                console.log(d);
+                                this.props.history.push('/app/' + d.data.d.filter(f => f.Key === "MEMBER_ID")[0].Value);
+                            }).catch(c => {
+                                this.setState({ loading: false, error: c.response.data.Message });
+                            });
+                        }
+                    }} className="btn btn-danger mb-1" disabled={this.state.loading}>{this.state.loading ? <div>
+                        <span>Connecting...</span>
+                    </div> : "Connect to Scots College"}</button>
+                </div>
             </form>
 
             {false && <div className="mt-5">
@@ -219,6 +153,6 @@ class Homepage extends Component {
                     </div>
                 </div>
             </div>}
-        </div>
+        </div>;
     }
 }
