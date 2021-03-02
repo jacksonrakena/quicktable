@@ -46,12 +46,12 @@ export default class Root extends Component {
                 <div className="container-fluid">
                     <span className="text-muted">
                         &copy; 2019-2021 <a href="http://github.com/scotscollegenz">Scots College Digital Committee (Komiti Matihiko).</a><br />
-                        All rights reserved. Build <code>{this.props.version}</code>.<br />
+                        {/*}All rights reserved. Build <code>{this.props.version}</code>.<br />
                         Made in New Zealand <img src="/img/nz_flag.svg" style={{
                             height: '1em',
                             width: 'auto',
                             justifySelf: 'center'
-                        }}/>
+                        }}/>*/}
                     </span>
                 </div>
             </div>

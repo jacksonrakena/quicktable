@@ -42,6 +42,7 @@ export default class App extends Component {
                     </div>
                     <div className="col-sm panel">
                         <h4>School resources</h4>
+                        <p style={{color: 'darkgrey'}}>Last updated: March 2, 2021</p>
                         <div>
                             <ul>
                                 {Object.keys(this.links).map(key => {
