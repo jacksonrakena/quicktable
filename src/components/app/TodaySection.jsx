@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { DateTime } from 'luxon';
 
 export default class TodaySection extends Component {
     render() {
@@ -9,6 +10,13 @@ export default class TodaySection extends Component {
                 Wellington is at Alert Level 1.
                 </strong>
             </span><br /><br />
+            <span><i className="far fa-clock" style={{
+                        justifySelf: 'center',
+                        display: 'inline',
+                        width: '100%',
+                        textAlign: 'center'
+                    }}></i> It's {DateTime.fromObject({zone: 'Pacific/Auckland'}).toFormat('h:mm a \'on\' DDDD\'.\'')}</span>
+                    <br />
             Make sure to check out the <a href="https://www.instagram.com/scots.co.nz/">@scots.co.nz</a> Instagram page.
         </div>
     }

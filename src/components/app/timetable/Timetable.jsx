@@ -194,19 +194,19 @@ export default class Timetable extends Component {
         }} className="p-2 text-center">
             <div className="d-flex flex-row justify-content-between">
                 <div>
-                    <button className="p-2 btn" style={{backgroundColor: 'rgba(154, 147, 242, 0.667)',
+                    <button className="p-2 btn" style={{backgroundColor: 'rgba(199, 0, 57, 0.667)',
                         color: 'white'}} onClick={this.backwards}>Back</button>
                 </div>
                 <strong className="align-self-center">
                 {this.state.isDateEditorOpen ? <div className="p-2" id='date-editor'>
                         <ReactDatePicker selected={this.state.date.toJSDate()} onChange={this.setDate} onCalendarClose={this.toggleDateEditor} startOpen={true} onCalendarOpen={this.onCalendarOpen}/>
                     </div> : <a href='#' className="p-2" onClick={this.toggleDateEditor} style={{color: 'white'}}>
-                    {this.state.classes[0].day > 5 ? "Week B" : "Week A"} - {this.state.date.toFormat('DDDD')}
+                    {this.state.classes[0].day > 5 ? "Week B" : "Week A"} <br />  <span style={{fontWeight: 'normal'}}>{this.state.date.toFormat('DDDD')}</span>
                     </a>}
 
                 </strong>
                 <div>
-                <button className="p-2 btn" style={{backgroundColor: 'rgba(154, 147, 242, 0.667)', color: 'white'}} id='date-editor-btn' onClick={this.advance}>
+                <button className="p-2 btn" style={{backgroundColor: 'rgba(199, 0, 57, 0.667)', color: 'white'}} id='date-editor-btn' onClick={this.advance}>
                         Next
                     </button>
                 </div>

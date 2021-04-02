@@ -12,7 +12,9 @@ export default class App extends Component {
     }
     render() {
         return <div>
-            <div className="container-fluid">
+            <div style={{
+                padding: '0px'
+            }}>
                 <div className="row">
                     <div className="col-sm panel">
                         {<TodaySection />}

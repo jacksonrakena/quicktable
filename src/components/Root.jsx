@@ -24,18 +24,24 @@ export default class Root extends Component {
         return <BrowserRouter>
             <div>
                 <nav class="navbar  navbar-light" style={{
-                    backgroundImage: 'linear-gradient(to bottom right, rgba(154, 147, 242, 0.667), rgba(154, 147, 242, 0))'
+                    // 154, 147, 242
+                    //backgroundImage: 'linear-gradient(to bottom right, rgba(199, 0, 57, 0), rgba(199, 0, 57, 0.667))'
+                    backgroundColor: 'rgba(199, 0, 57, 0.8)'
                 }}>
-                    <NavLink class="navbar-brand" to="/"><img alt="QT logo" src="/master-transparent.png" style={{
+                    <NavLink class="navbar-brand" to="/" style={{
+                        fontWeight: 'bold',
+                        color: 'white',
+                        textShadow: '2px 2px 3px grey'
+                    }}><img alt="QT logo" src="/master-transparent.png" style={{
                         justifySelf: 'center',
                         width: '2em'
-                    }} /> Quicktable, Scots College</NavLink><br />
-                    <span><i className="far fa-clock" style={{
+                    }} /> Scots College</NavLink><br />
+                    {/*<span><i className="far fa-clock" style={{
                         justifySelf: 'center',
                         display: 'inline',
                         width: '100%',
                         textAlign: 'center'
-                    }}></i> {this.state.date.toFormat('DDDD, h:mm a (ZZZZZ)')}</span>
+                    }}></i> {this.state.date.toFormat('DDDD, h:mm a (ZZZZZ)')}</span>*/}
                 </nav>
                 <Switch>
                     <Route exact path="/" component={Login} />
