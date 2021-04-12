@@ -23,7 +23,7 @@ export default class Root extends Component {
     render() {
         return <BrowserRouter>
             <div>
-                <nav class="navbar  navbar-light" style={{
+                <nav class="navbar navbar-light" style={{
                     // 154, 147, 242
                     //backgroundImage: 'linear-gradient(to bottom right, rgba(199, 0, 57, 0), rgba(199, 0, 57, 0.667))'
                     backgroundColor: 'rgba(199, 0, 57, 0.8)'

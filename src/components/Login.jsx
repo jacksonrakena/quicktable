@@ -9,7 +9,8 @@ export class Login extends Component {
             username: '',
             password: '',
             loading: false,
-            idNumber: ''
+            idNumber: '',
+            displayTrust: false
         };
 
         this.updateValue = this.updateValue.bind(this);
@@ -22,12 +23,17 @@ export class Login extends Component {
     }
 
     render() {
-        return <div className="content">
-            <div>
+        return <div className="content" /*style={{
+            margin: '0 auto',
+            width: '50%',
+            marginTop: '25px',
+            marginBottom: '25px'
+        }}*/>
+            <div style={{
+                margin: '0 auto'
+            }}>
                 <h3>Quicktable</h3>
-                Welcome to the Quicktable @ Scots College student portal.
-                <br />
-                Quicktable is your all-in-one solution for life at Scots College.
+                Welcome to Quicktable, your all-in-one solution for life at Scots College.
                 <br />
                 It includes quick access to your timetable, school resources, with more
                 <br />
@@ -35,37 +41,25 @@ export class Login extends Component {
                 <br />
                 <br />
 
-                All you'll need to jump in is your school username and password, <strong>or</strong> your student ID number.
+                All you'll need to jump in is your school username and password.
             </div>
             <br />
-            <form className="mb-5 mt-2">
-                <b>Option 1: Your Student ID Number (Photocopier ID)</b>
-                <div class="form-group">
-                    <label for="id">Your student ID number (or photocopier ID)</label>
-                    <input id='id' style={{
-                        width: '250px'
-                    }} className="form-control" inputMode="numeric" type="number" placeholder="5 or 6 digits" onChange={(v, d) => {
-                        this.setState({
-                            idNumber: v.target.value
-                        });
-                    }} />
-
-                </div>
-                <button type="submit" onClick={(d) => {
-                    d.preventDefault();
-                    this.props.history.push('/app/' + this.state.idNumber);
-                }} className="btn btn-danger mb-1" disabled={this.state.loading}>{this.state.loading ? <div>
-                    <span>Connecting...</span>
-                </div> : "Connect to Scots College"}</button>
-            </form>
-            <hr />
-            <form>
-                <b>Option 2: Your School Username And Password</b>
+            <div style={{
+                borderRadius: '25px',
+                border: '3px solid #dc3545',
+                padding: '25px',
+                margin: '0 auto',
+                maxWidth: '700px',
+            }}>
+            <form style={{
+                margin: '0 auto'
+            }}>
+                <b>Authorize with Scots College, Wellington</b>
                 <div class="text-danger mb-3">
                     <b>{this.state.error}</b>
                 </div>
                 <div class="form-group">
-                    <label for="domain">Domain</label>
+                    <label for="domain">🌐 Domain</label>
                     <input id='domain' style={{
                         width: '250px'
                     }} className="form-control" type="text" placeholder="SCOTSCOLLEGE\student" readOnly />
@@ -74,7 +68,7 @@ export class Login extends Component {
                 <div class="form-group" style={{
                     width: '350px'
                 }}>
-                    <label for="usernameInput">Your school username</label>
+                    <label for="usernameInput">👤 Your school username</label>
                     <div class="input-group">
                         <input type="text" className="form-control" id="usernameInput" onChange={(v, d) => {
                             this.setState({
@@ -93,7 +87,7 @@ export class Login extends Component {
                 <div className="form-group" style={{
                     width: '300px'
                 }}>
-                    <label for="passwordInput">Your school password</label>
+                    <label for="passwordInput">🔒 Your school password</label>
                     <input type="password" className="form-control" id="passwordInput" onChange={(v, d) => {
                         this.setState({
                             password: v.target.value
@@ -123,36 +117,34 @@ export class Login extends Component {
                         }
                     }} className="btn btn-danger mb-1" disabled={this.state.loading}>{this.state.loading ? <div>
                         <span>Connecting...</span>
-                    </div> : "Connect to Scots College"}</button>
+                    </div> : "🔒 Authorize"}</button>
+                    <br />
+                    <br />
+                    
+                    {// eslint-disable-next-line 
+                    <a href='javascript:void();' /*style={{
+                            backgroundColor: 'transparent',
+                            border: 'none',
+                            cursor: 'pointer',
+                            textDecoration: 'underline',
+                            display: 'inline',
+                            margin: 0,
+                            padding: 0
+                    }} */ onClick={() => this.setState({displayTrust: !this.state.displayTrust})}>Can I trust Quicktable?</a>}
+                    <div style={{
+                        display: this.state.displayTrust ? 'block' : 'none'
+                    }}>
+                        Yes, you can! <br /> <br />
+                        <img style={{width: '100%' }} src="https://i.imgur.com/AMd3tWF.png" /> <br /> <br />
+                        As seen in the above image, your browser only sends your school username and password to
+                        Scots College's timetable infrastructure to get your student ID, which is used for
+                        timetable information and events. <br /><br />
+                        To protect your data in the transport process, all user information is sent securely with HTTPS, as seen in the image below.<br /> <br />
+                        <img src="https://i.imgur.com/OHGYmnB.png" style={{width: '50%'}}/>
+                    </div>
                 </div>
             </form>
-
-            {false && <div className="mt-5">
-                <h4>Where can I find my student ID number?</h4>
-                <span style={{ color: 'gray' }}>Your student ID number is stored solely on your device and is never sent to Quicktable's servers.</span>
-                <div className="mt-2">
-                    You've got a couple of options.
-                    <div className="mt-2">
-                        <b>Option 1: Your School-Issued Student ID Card</b> <br />
-                        <div>
-                            Your student ID number is printed on the bottom of your school-issued student ID card, typically issued
-                            to new students in March.<br />
-                            It's located underneath the barcode, as you can see in the example image below, taken from a Senior School student
-                            ID card issued in 2020.
-                        </div>
-                        <img alt="Diagram of student ID card" src="img/id_expl.png" width="250" />
-                    </div>
-                    <div className="mt-2">
-                        <b>Option 2: The PCSchool Portal</b><br />
-                        <div>
-                            Your student ID number is available on the PCSchool portal. You can go there directly by clicking <a href="https://spider.scotscollege.school.nz/Spider2011/Pages/StudentInformation.aspx">this link.</a><br />
-                            It's located next to the "Barcode" label in your student information, as you can see in the example image below, taken
-                            from a Senior School student's information page.
-                        </div>
-                        <img alt="Diagram of PCSchool Student Information page" src="img/net_expl.png" width="400" />
-                    </div>
-                </div>
-            </div>}
+            </div>
         </div>;
     }
 }
