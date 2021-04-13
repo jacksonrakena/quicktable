@@ -16,4 +16,9 @@ export default class DateUtils {
         }
         return date
     }
+
+    static nextWeekday(date) {
+        date = date.plus({ days: 1 })
+        return this.findNearestWeekday(date)
+    }
 }

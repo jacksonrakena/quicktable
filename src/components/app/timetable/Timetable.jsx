@@ -4,16 +4,20 @@ import axios from 'axios'
 import TimetableClass from './TimetableClass';
 import DateUtils from "../../../utils/DateUtils";
 import ReactDatePicker from "react-datepicker";
+import './animations.css';
 
 export default class Timetable extends Component {
     constructor(props) {
         super(props)
+        var initialDate = DateUtils.findNearestWeekday(DateTime.local(), 'forwards');
+        if (initialDate.hour >= 15) initialDate = DateUtils.nextWeekday(initialDate, 'forwards');
         this.state = {
             classes: [],
             id: props.id,
             error: '',
-            date: DateUtils.findNearestWeekday(DateTime.local(), 'forwards'),
-            isDateEditorOpen: false
+            date: initialDate,
+            isDateEditorOpen: false,
+            loadingMessage: ''
         }
         this.advance = this.advance.bind(this)
         this.backwards = this.backwards.bind(this)
@@ -24,7 +28,8 @@ export default class Timetable extends Component {
     updateTimetable(newDate) {
         this.setState({
             classes: [],
-            done: false
+            done: false,
+            loadingMessage: 'Loading...'
         })
         axios.post('https://spider.scotscollege.school.nz/Spider2011/Handlers/Timetable.asmx/GetTimetable_ByDayW', {
             LoadFutureDate: false,
@@ -160,7 +165,7 @@ export default class Timetable extends Component {
         } else if (date.weekNumber == DateTime.local().plus({ weeks: 1 }).weekNumber) {
             return 'Next ' + date.toFormat('EEEE') + ' (' + date.toFormat('d MMMM') + ')'
         }
-        return date.toFormat('DDDD')
+        return date.toFormat('EEEE')
     }
 
     render() {
@@ -171,7 +176,7 @@ export default class Timetable extends Component {
                     <span>{this.state.error}</span>
                 </div>
             </div>
-        } else if (this.state.classes.length === 0 && !this.state.done) {
+        } /*else if (this.state.classes.length === 0 && !this.state.done) {
             timetablePanel = <div class="container h-100 d-flex justify-content-center align-content-center">
                 <div class="jumbotron my-auto align-self-center">
                     <div class="spinner-border" role="status"></div>
@@ -179,11 +184,7 @@ export default class Timetable extends Component {
                     <span>Loading timetable...</span>
                 </div>
             </div>
-        } else if (this.state.classes.length === 0 && this.state.done) {
-            timetablePanel = <div class="container h-100 flex-column justify-content-center align-content-center">
-                <div class="jumbotron my-auto align-self-center">No classes found.</div>
-            </div>
-        } else {
+        } */else {
             timetablePanel = <div style={{
             }}>
                 <div className="d-flex flex-column justify-content-between">
@@ -201,7 +202,7 @@ export default class Timetable extends Component {
                 {this.state.isDateEditorOpen ? <div className="p-2" id='date-editor'>
                         <ReactDatePicker selected={this.state.date.toJSDate()} onChange={this.setDate} onCalendarClose={this.toggleDateEditor} startOpen={true} onCalendarOpen={this.onCalendarOpen}/>
                     </div> : <a href='#' className="p-2" onClick={this.toggleDateEditor} style={{color: 'white'}}>
-                    {this.state.classes[0].day > 5 ? "Week B" : "Week A"} <br />  <span style={{fontWeight: 'normal'}}>{this.state.date.toFormat('DDDD')}</span>
+                    {this.createRelativeDateDisplay(this.state.date)}{this.state.classes[0] ? (this.state.classes[0].day > 5 ? ", Week B" : ", Week A") : ""} <br />  <span style={{fontWeight: 'normal'}}>{this.state.date.toFormat('DDDD')}</span>
                     </a>}
 
                 </strong>
@@ -212,6 +213,29 @@ export default class Timetable extends Component {
                 </div>
             </div>
             </div>
+            
+            {this.state.classes.length === 0 && !this.state.done ?
+                <div style={{
+                    //backgroundColor: this.generateColorForClass(this.props.entry.name || this.props.entry.slot) + 'AA',
+                    listStyle: 'none',
+                    border: '1px solid white',
+                    //margin: '0 auto',
+                    //background: 'linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3)'
+                }} className={"p-2 align-middle animate-rainbow"}><span style={{
+                    margin: '0 auto',
+                    textAlign: 'center',
+                    color: 'white',
+                    fontWeight: 'bold'
+                }}>{this.state.loadingMessage ?? 'Loading...'}</span><br /></div>
+                /*<div class="jumbotron my-auto align-self-center">
+                    <div class="spinner-border" role="status"></div>
+                    <br />
+                    <span>Loading timetable...</span>
+                </div>*/
+            : ''}
+            {this.state.classes.length === 0 && this.state.done ?
+                <span>No classes found.</span>
+            : ''}
                 {this.state.classes.map((element, i0) => {
                     return <TimetableClass entry={element} />
                 })}
