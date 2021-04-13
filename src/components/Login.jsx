@@ -13,6 +13,11 @@ export class Login extends Component {
             displayTrust: false
         };
 
+        if (document.cookie && document.cookie.startsWith('qt-id::')) {
+            var id = document.cookie.replace('qt-id::', '');
+            this.props.history.push('/app/' + id);
+        }
+
         this.updateValue = this.updateValue.bind(this);
     }
 
@@ -110,7 +115,9 @@ export class Login extends Component {
                             }).then(d => {
                                 console.log('Authorized');
                                 console.log(d);
-                                this.props.history.push('/app/' + d.data.d.filter(f => f.Key === "MEMBER_ID")[0].Value);
+                                var id = d.data.d.filter(f => f.Key === "MEMBER_ID")[0].Value;
+                                document.cookie = 'qt-id::' + id;
+                                this.props.history.push('/app/' + id);
                             }).catch(c => {
                                 this.setState({ loading: false, error: c.response.data.Message });
                             });
