@@ -161,9 +161,9 @@ export default class Timetable extends Component {
         } else if (dayDifference == -1) {
             return 'Yesterday'
         } else if (date.weekNumber == DateTime.local().minus({ weeks: 1}).weekNumber) {
-            return 'Last ' + date.toFormat('EEEE') + ' (' + date.toFormat('d MMMM') + ')'
+            return 'Last ' + date.toFormat('EEEE')
         } else if (date.weekNumber == DateTime.local().plus({ weeks: 1 }).weekNumber) {
-            return 'Next ' + date.toFormat('EEEE') + ' (' + date.toFormat('d MMMM') + ')'
+            return 'Next ' + date.toFormat('EEEE')
         }
         return date.toFormat('EEEE')
     }
@@ -195,7 +195,7 @@ export default class Timetable extends Component {
         }} className="p-2 text-center">
             <div className="d-flex flex-row justify-content-between">
                 <div>
-                    <button className="p-2 btn" style={{backgroundColor: 'rgba(199, 0, 57, 0.667)',
+                    <button className="p-2 btn" style={{backgroundColor: '#dc3545',
                         color: 'white'}} onClick={this.backwards}>Back</button>
                 </div>
                 <strong className="align-self-center">
@@ -207,7 +207,7 @@ export default class Timetable extends Component {
 
                 </strong>
                 <div>
-                <button className="p-2 btn" style={{backgroundColor: 'rgba(199, 0, 57, 0.667)', color: 'white'}} id='date-editor-btn' onClick={this.advance}>
+                <button className="p-2 btn" style={{backgroundColor: '#dc3545', color: 'white'}} id='date-editor-btn' onClick={this.advance}>
                         Next
                     </button>
                 </div>

@@ -26,7 +26,7 @@ export default class Root extends Component {
                 <nav class="navbar navbar-light" style={{
                     // 154, 147, 242
                     //backgroundImage: 'linear-gradient(to bottom right, rgba(199, 0, 57, 0), rgba(199, 0, 57, 0.667))'
-                    backgroundColor: 'rgba(199, 0, 57, 0.8)'
+                    backgroundColor: '#dc3545'
                 }}>
                     <NavLink class="navbar-brand" to="/" style={{
                         fontWeight: 'bold',
