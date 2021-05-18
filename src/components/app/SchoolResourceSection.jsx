@@ -27,6 +27,21 @@ export default class SchoolResourceSection extends Component {
                                     return <ResourceLink url={this.links[key]} name={key} />
                                 })}
                             </ul>
+                            <div>
+                                {// eslint-disable-next-line 
+                    <a href='javascript:void();' /*style={{
+                            backgroundColor: 'transparent',
+                            border: 'none',
+                            cursor: 'pointer',
+                            textDecoration: 'underline',
+                            display: 'inline',
+                            margin: 0,
+                            padding: 0
+                    }} */ onClick={() => {
+                        document.cookie = '';
+                        this.props.history.push('/')
+                    }}>Sign out</a>}
+                            </div>
             </div>
         </div>
     }

@@ -25,7 +25,7 @@ export default class App extends Component {
                         {<Timetable id={this.id} />}
                     </div>
                     <div className="col-sm panel">
-                        {<SchoolResourceSection />}
+                        {<SchoolResourceSection history={this.props.history}/>}
                     </div>
                 </div>
             </div>
