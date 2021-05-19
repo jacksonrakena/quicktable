@@ -34,46 +34,33 @@ export class Login extends Component {
             marginTop: '25px',
             marginBottom: '25px'
         }}*/>
-            <div style={{
-                margin: '0 auto'
-            }}>
-                <h3>Quicktable</h3>
-                Welcome to Quicktable, your all-in-one solution for life at Scots College.
-                <br />
-                It includes quick access to your timetable, school resources, with more
-                <br />
-                features coming soon.
-                <br />
-                <br />
-
-                All you'll need to jump in is your school username and password.
-            </div>
             <br />
             <div style={{
-                borderRadius: '25px',
-                border: '3px solid #dc3545',
-                padding: '25px',
-                margin: '0 auto',
+                //borderRadius: '25px',
+                //border: '3px solid #dc3545',
+                //padding: '25px',
+                //margin: '0 auto',
                 maxWidth: '700px',
             }}>
             <form style={{
-                margin: '0 auto'
+                //margin: '0 auto'
             }}>
-                <b>Authorize with Scots College, Wellington</b>
+                <b style={{
+                }}>Login with your school account</b>
                 <div class="text-danger mb-3">
                     <b>{this.state.error}</b>
                 </div>
-                <div class="form-group">
+                {/*<div class="form-group">
                     <label for="domain">🌐 Domain</label>
                     <input id='domain' style={{
                         width: '250px'
                     }} className="form-control" type="text" placeholder="SCOTSCOLLEGE\student" readOnly />
-                </div>
+                </div>*/}
 
                 <div class="form-group" style={{
                     width: '350px'
                 }}>
-                    <label for="usernameInput">👤 Your school username</label>
+                    <label for="usernameInput">Username</label>
                     <div class="input-group">
                         <input type="text" className="form-control" id="usernameInput" onChange={(v, d) => {
                             this.setState({
@@ -92,7 +79,7 @@ export class Login extends Component {
                 <div className="form-group" style={{
                     width: '300px'
                 }}>
-                    <label for="passwordInput">🔒 Your school password</label>
+                    <label for="passwordInput">Password</label>
                     <input type="password" className="form-control" id="passwordInput" onChange={(v, d) => {
                         this.setState({
                             password: v.target.value
@@ -124,7 +111,7 @@ export class Login extends Component {
                         }
                     }} className="btn btn-danger mb-1" disabled={this.state.loading}>{this.state.loading ? <div>
                         <span>Connecting...</span>
-                    </div> : "🔒 Authorize"}</button>
+                    </div> : "Login"}</button>
                     <br />
                     <br />
                     
@@ -137,7 +124,7 @@ export class Login extends Component {
                             display: 'inline',
                             margin: 0,
                             padding: 0
-                    }} */ onClick={() => this.setState({displayTrust: !this.state.displayTrust})}>Can I trust Quicktable?</a>}
+                    }} */ onClick={() => this.setState({displayTrust: !this.state.displayTrust})}>Can I trust the Timetable app?</a>}
                     <div style={{
                         display: this.state.displayTrust ? 'block' : 'none'
                     }}>

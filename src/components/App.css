@@ -7,15 +7,9 @@
     justify-self: center;
 }
 a:hover {
-    background-color: rgba(145, 1, 41, 0.945);
-    xbackground-color: #b5ad4c;
-    color: white;
-    padding: 3px;
-    text-decoration: none;
-    font-weight: bold;
+    color: rgba(145, 1, 41, 0.945);
 }
 
 a {
-    xcolor: #b5ad4c;
     color: #dc3545;
 }

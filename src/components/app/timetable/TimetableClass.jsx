@@ -66,7 +66,7 @@ export default class TimetableClass extends Component {
         return <div style={styles} className={"p-2 align-middle"}>
             <div className="d-flex flex-row justify-content-between">
                 <span>{this.props.entry.startTimeF.toFormat('h:mm a')} </span>
-                <b style={{backgroundColor: 'white', paddingLeft: '5px', paddingRight: '5px'}}>{header}</b>
+                <b style={{paddingLeft: '5px', paddingRight: '5px'}}>{header}</b>
                 <span>{this.props.entry.endTimeF.toFormat('h:mm a')}</span>
             </div>
             {this.props.entry.room !== "" && this.props.entry.teacher && this.props.entry.email && !this.props.entry.isAssembly && !this.props.entry.isChapel ? <div>

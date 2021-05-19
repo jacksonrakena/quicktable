@@ -29,13 +29,11 @@ export default class Root extends Component {
                     backgroundColor: '#dc3545'
                 }}>
                     <NavLink class="navbar-brand" to="/" style={{
-                        fontWeight: 'bold',
+                        //fontWeight: 'bold',
                         color: 'white',
-                        textShadow: '2px 2px 3px grey'
-                    }}><img alt="QT logo" src="/master-transparent.png" style={{
-                        justifySelf: 'center',
-                        width: '2em'
-                    }} /> Scots College</NavLink><br />
+                        //textShadow: '2px 2px 3px grey',
+                        fontFamily: 'Scots'
+                    }}>Scots College Digital Services</NavLink><br />
                     {/*<span><i className="far fa-clock" style={{
                         justifySelf: 'center',
                         display: 'inline',
@@ -51,7 +49,9 @@ export default class Root extends Component {
             </div>
             <div className="qt-footer">
                 <div className="container-fluid">
-                    <span className="text-muted">
+                    <span className="text-muted" style={{
+                        fontFamily: 'Scots'
+                    }}>
                         &copy; 2019-2021 <a href="http://github.com/scotscollegenz">Scots College Digital Committee (Komiti Matihiko).</a><br />
                         {/*}All rights reserved. Build <code>{this.props.version}</code>.<br />
                         Made in New Zealand <img src="/img/nz_flag.svg" style={{
