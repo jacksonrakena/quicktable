@@ -53,6 +53,7 @@ export default class Timetable extends Component {
                     startTime: c.FromTime,
                     endTime: c.ToTime,
                     slot: c.Heading,
+                    short: c.SubjectAbbrev,
                     class: c.Class,
                     startTimeF: DateTime.fromFormat(c.FromTime, "H'.'mm"),
                     endTimeF: DateTime.fromFormat(c.ToTime, "H'.'mm"),

@@ -25,7 +25,7 @@ export default class TimetableClass extends Component {
     render() {
         console.log(this.props.entry)
         var styles = {
-            backgroundColor: this.generateColorForClass(this.props.entry.name || this.props.entry.slot) + 'AA',
+            backgroundColor: this.generateColorForClass(this.props.entry.name || this.props.entry.slot) + '8C',
             listStyle: 'none',
             border: '1px solid white',
         }
@@ -50,6 +50,7 @@ export default class TimetableClass extends Component {
         if (this.props.entry.isStudyPeriod) {
             header = <span>Study Period</span>
             this.props.entry.room = <span>&nbsp;</span>
+            styles.backgroundColor = 'white';
         }
         if (this.props.entry.isLunch) {
             header = <span>Lunch</span>
@@ -63,7 +64,19 @@ export default class TimetableClass extends Component {
             this.props.entry.room = <span>&nbsp;</span>
             header = <span>{this.props.entry.slot}</span>
         }
+        var isCompact = false;
+        if (isCompact) {
+            return <div style={styles} className={"p-2 align-middle"}>
+            {/* Period time row */}
+            <div className="d-flex flex-row justify-content-between">
+                <span>{this.props.entry.startTimeF.toFormat('h:mm a')} </span>
+                <b style={{paddingLeft: '5px', paddingRight: '5px'}}>{header}</b>
+                <span>{this.props.entry.endTimeF.toFormat('h:mm a')}</span>
+            </div>
+            </div>
+        }
         return <div style={styles} className={"p-2 align-middle"}>
+            {/* Period time row */}
             <div className="d-flex flex-row justify-content-between">
                 <span>{this.props.entry.startTimeF.toFormat('h:mm a')} </span>
                 <b style={{paddingLeft: '5px', paddingRight: '5px'}}>{header}</b>
@@ -73,15 +86,16 @@ export default class TimetableClass extends Component {
                 <div className="text-center">
                    {this.props.entry.room}
                 </div>
-                <div className="text-center">
-                    {this.props.entry.teacher}
-                </div></div> : <div>
-                <div className="text-center">
+                {this.props.entry.teacher ? <div className="text-center">
+                    {this.props.entry.teacher}</div> : <></>}
+                </div> : <div>
+                    {this.props.entry.room ? <div className="text-center">
                     {this.props.entry.room}
-                </div><div className="text-center">
+                </div> : <></>}
+                <div className="text-center">
                 &nbsp;
                 </div>
-                </div>}
+    </div>}
         </div>
     }
 }
