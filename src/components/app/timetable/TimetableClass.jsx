@@ -82,22 +82,6 @@ export default class TimetableClass extends Component {
                 &nbsp;
                 </div>
                 </div>}
-            {/*this.props.entry.room && this.props.entry.room !== " " ? <div>
-                <div className="text-center">
-                    Room {this.props.entry.room}
-                </div>
-                <div className="text-center">
-                    {this.props.entry.teacher} <a style={{
-                        color: 'black'
-                    }} href={"mailto:"+this.props.entry.email}><i class="far fa-envelope"></i></a>
-                </div></div> : <div>
-                <div className="text-center">
-                    &nbsp;
-                </div><div className="text-center">
-                &nbsp;
-                </div>
-                </div>
-                */}
         </div>
     }
 }

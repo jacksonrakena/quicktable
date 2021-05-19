@@ -18,7 +18,7 @@ export default class TodaySection extends Component {
                         display: 'inline',
                         width: '100%',
                         textAlign: 'center'
-                    }}></i> It's {DateTime.fromObject({zone: 'Pacific/Auckland'}).toFormat('h:mm a \'on\' DDDD\'.\'')}</span>
+                    }}></i> It's {DateTime.fromObject({zone: 'Pacific/Auckland'}).toFormat("h:mm a 'on' DDDD'.'")}</span>
                     <br />
         </div>
     }
