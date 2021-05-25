@@ -1,5 +1,5 @@
 # ⭐️ Scots College: Timetable Link (Quicktable)
-https://timetable.scots.link/
+https://timetable.scots.link/  
 Quicktable is a React Progressive Web Application (PWA) timetable manager for students of Scots College. It uses the open PCSchool timetable API to fetch users' timetables using their provided student ID number.
 
 ## Authorization flow - technical explanation
