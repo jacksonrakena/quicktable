@@ -33,7 +33,7 @@ export default class Root extends Component {
                         color: 'white',
                         //textShadow: '2px 2px 3px grey',
                         fontFamily: 'Scots'
-                    }}>Scots College Digital Services</NavLink><br />
+                    }}>Scots College</NavLink><br />
                     {/*<span><i className="far fa-clock" style={{
                         justifySelf: 'center',
                         display: 'inline',

@@ -177,15 +177,8 @@ export default class Timetable extends Component {
                     <span>{this.state.error}</span>
                 </div>
             </div>
-        } /*else if (this.state.classes.length === 0 && !this.state.done) {
-            timetablePanel = <div class="container h-100 d-flex justify-content-center align-content-center">
-                <div class="jumbotron my-auto align-self-center">
-                    <div class="spinner-border" role="status"></div>
-                    <br />
-                    <span>Loading timetable...</span>
-                </div>
-            </div>
-        } */else {
+        }
+        else {
             timetablePanel = <div style={{
             }}>
                 <div className="d-flex flex-column justify-content-between">
@@ -199,7 +192,7 @@ export default class Timetable extends Component {
                     <button className="p-2 btn" style={{backgroundColor: '#dc3545',
                         color: 'white'}} onClick={this.backwards}>Back</button>
                 </div>
-                <strong className="align-self-center">
+                <strong className="align-self-center" style={{fontSize: '1.1em'}}>
                 {this.state.isDateEditorOpen ? <div className="p-2" id='date-editor'>
                         <ReactDatePicker selected={this.state.date.toJSDate()} onChange={this.setDate} onCalendarClose={this.toggleDateEditor} startOpen={true} onCalendarOpen={this.onCalendarOpen}/>
                     </div> : <a href='#' className="p-2" onClick={this.toggleDateEditor} style={{color: 'white'}}>
@@ -244,7 +237,7 @@ export default class Timetable extends Component {
             </div>
         }
         return <div>
-            <h4>Timetable {this.state.date.ordinal !== DateTime.local().ordinal ? <a href="#" onClick={this.setToday.bind(this)}>Today</a> : <></>}</h4>
+            <h4>Your timetable {this.state.date.ordinal !== DateTime.local().ordinal ? <a href="#" onClick={this.setToday.bind(this)}>Today</a> : <></>}</h4>
             {/*<div style={{
                 marginBottom: '10px',
                 color: 'grey',
