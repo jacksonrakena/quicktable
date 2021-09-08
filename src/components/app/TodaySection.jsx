@@ -17,11 +17,11 @@ export default class TodaySection extends Component {
                     <div style={{color: 'grey'}}>
                         COVID-19 Update
                     </div>
-                    Wellington is at <strong>Alert Level 3.</strong>
+                    Wellington is at <strong>Alert Level 2.</strong>
                 </div>
             </div>
             <div style={{marginBottom: '8px'}}>
-                School campus is closed to all but members of the Boarding House and approved staff.
+                The ability to gather in groups of over 50 indoors (and 100 outdoors) is limited. See the <a href="https://covid19.govt.nz/">Government advice</a> for more information.
             </div></div>}
             <div>
             <a href="https://scots.link/dn"><button className="p-2 btn" style={{marginTop: '10px', backgroundColor: '#dc3545',
