@@ -21,6 +21,7 @@ export default class TodaySection extends Component {
                 </div>
             </div>
             <div style={{marginBottom: '8px'}}>
+                Campus is open for in-person instruction. <br />
                 The ability to gather in groups of over 50 indoors (and 100 outdoors) is limited. See the <a href="https://covid19.govt.nz/">Government advice</a> for more information.
             </div></div>}
             <div>
